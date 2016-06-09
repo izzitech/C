@@ -1,6 +1,6 @@
 ﻿/* --------------------------------------------------------
 ||
-||      	My own generic WinAPI application
+||      			Testing menu bars
 ||
 ||
 ||				Author: Iván E. Sierra
@@ -18,11 +18,31 @@
 /*-----------------------------------------------
 		Global
 -----------------------------------------------*/
+#define IDM_FILE_NEW 1
+#define IDM_FILE_OPEN 2
+#define IDM_FILE_QUIT 3
+
 unsigned short* applicationName = L"HelloKitty";
 
 /*-----------------------------------------------
 		Functions
 -----------------------------------------------*/
+void AddMenus(void* handle)
+{
+	void* menuBar;
+	void* menu;
+
+	menuBar = CreateMenu();
+	menu = CreateMenu();
+
+	AppendMenuW(menu, MF_STRING, IDM_FILE_NEW, L"&New");
+	AppendMenuW(menu, MF_STRING, IDM_FILE_OPEN, L"&Open");
+	AppendMenuW(menu, MF_SEPARATOR, 0, NULL);
+	AppendMenuW(menu, MF_STRING, IDM_FILE_QUIT, L"&Quit");
+	AppendMenuW(menuBar, MF_POPUP, unsigned int* menu, L"&File");
+	SetMenu(handle, menubar);
+}
+
 void* __stdcall
 mainWindow(
 	void* handle,
@@ -32,6 +52,9 @@ mainWindow(
 {
 	switch (msg)
 	{
+	case WM_CREATE:
+		AddMenus(handle);
+		break;
 	case WM_LBUTTONDOWN:
 	{
 		unsigned short appPath[MAX_PATH];
@@ -45,6 +68,18 @@ mainWindow(
 			MB_ICONINFORMATION | MB_OK);
 	}
 	break;
+	case WM_COMMAND:
+		switch (LOWORD(param1))
+		{
+		case IDM_FILE_NEW:
+		case IDM_FILE_OPEN:
+			MessageBeep(MB_ICONINFORMATION);
+			break;
+		case IDM_FILE_QUIT:
+			SendMessage(handle, WM_CLOSE, 0, 0);
+			break;
+		}
+		break;
 	case WM_CLOSE:
 		DestroyWindow(handle);
 		break;
@@ -112,7 +147,7 @@ wWinMain(
 
 	ShowWindow(handle, startMode);
 	UpdateWindow(handle);
-	
+
 	/*----------------------------
 		Message queue
 	----------------------------*/
@@ -135,5 +170,6 @@ wWinMain(
 			DispatchMessageW(&msg);
 		}
 	}
+
 	return msg.param1;
 }
