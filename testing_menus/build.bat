@@ -1,5 +1,7 @@
 @echo off 
+
 mkdir .\build
 pushd .\build
-cl winMain.c /link ? /nologo
-popd .\
+pwd
+cl ..\winMain.c /nologo
+popd
