@@ -1,0 +1,33 @@
+http://stackoverflow.com/questions/22033502/microsoft-help-viewer-can-be-used-as-an-independent-application
+
+I recently faced the same problem: I didn't want to install "Visual Studio 2015" just to be able to run the accompanying Help Viewer (v2.2) application.
+
+It took a little bit of time, but in the end I managed to get it running by following these steps:
+
+    On a computer with VS2015 already installed, I used SysInternals Handle 4.0 to determine which files are required by the HlpViewer.exe executable
+    I then ran Less MSIérables 1.40 and used its l -t File argument to iterate over all MSI packages, which revealed that most of the required files can essentially be found in two packages: help3_vs_net.msi and vs_minshellcore.msi.
+    To install these manually, one needs to pass some additional command line arguments:
+    msiexec.exe /i help3_vs_net.msi VS_SETUP=1
+    msiexec.exe /i vs_minshellcore.msi MSIFASTINSTALL="7" VSEXTUI="1"
+
+Regrettably, after that some files are still missing ... to keep things simple, I copied the rest of them from the (aforementioned) working installation:
+
+    C:\ProgramData\Microsoft\HelpLibrary2
+    Essentially only contains a CatalogType.xml and some empty directories.
+    C:\Program Files (x86)\Microsoft Help Viewer\v2.2\CatalogInfo\VS11_en-us.cab
+
+Moreover, it's necessary to provide the application with a valid ContentStore path by importing the following .reg file:
+
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Help\v2.2\Catalogs\VisualStudio14]
+"LocationPath"="%ProgramData%\\Microsoft\\HelpLibrary2\\Catalogs\\VisualStudio14\\"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Help\v2.2\Catalogs\VisualStudio14\en-US]
+"SeedFilePath"="C:\\Program Files (x86)\\Microsoft Help Viewer\\v2.2\\CatalogInfo\\VS11_en-us.cab"
+"catalogName"="Visual Studio Documentation"
+
+Finally, I created a new Application Shortcut and changed its Target: to read as follows:
+"C:\Program Files (x86)\Microsoft Help Viewer\v2.2\HlpViewer.exe" /catalogName VisualStudio14 /launchingApp Microsoft,VisualStudio,14
+
+Et voilà, with that HlpViewer.exe finally executes without any problems!
