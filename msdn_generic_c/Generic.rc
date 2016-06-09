@@ -1,0 +1,17 @@
+/*************************************************************\
+* generic.rc: Resource script for Generic                     *
+*                                                             *
+*                                                             *
+\*************************************************************/
+
+#include <windows.h>
+#include "generic.h"
+#include "generic.dlg"
+
+GenericAppMenu MENU
+{
+   POPUP "&Help"
+   {
+      MENUITEM "&About",         IDM_ABOUT
+   }
+}
