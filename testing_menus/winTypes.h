@@ -10,14 +10,14 @@
 //----------------------------------------------------------*/
 
 // Replacement for POINT
-typedef struct Point
+struct Point
 {
 	long  x;
 	long  y;
 };
 
 // Replacement for tagMSG / MSG 
-typedef struct Message {
+struct Message {
 	void* handle;
 	unsigned int value;
 	void* param1;
@@ -27,7 +27,7 @@ typedef struct Message {
 };
 
 // Replacement for WNDCLASSW
-typedef struct Window {
+struct Window {
 	unsigned int style;
 	void* process;
 	int cbClsExtra;

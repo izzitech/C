@@ -1,0 +1,14 @@
+
+cmd /k starts with no-logo
+
+1) Use subst e.g.: "subst drive: path_to_code"
+
+2) Set path with cl.exe 
+(x64 "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\vcvarsx86_amd64.bat")
+(x32 "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\amd64_x86\vcvarsamd64_x86.bat")
+
+Compiler settings
+/o is deprecated, exe takes *.c file name.
+cl winMain.c /link ? /nologo
+
+3) Use cl (c compiler)

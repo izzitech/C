@@ -1,0 +1,1 @@
+cl winMain.c /link ? /nologo

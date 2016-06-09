@@ -11,6 +11,8 @@
 
 // Windows default libraries
 #include <windows.h>
+#pragma comment(lib, "user32")
+
 
 // DIY handmade libraries for replace crappy WinAPI
 #include <winTypes.h>

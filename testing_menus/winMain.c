@@ -11,9 +11,10 @@
 
 // Windows default libraries
 #include <windows.h>
+#pragma comment(lib, "user32")
 
 // DIY handmade libraries for replace crappy WinAPI
-#include <winTypes.h>
+#include "winTypes.h"
 
 /*-----------------------------------------------
 		Global
@@ -39,8 +40,8 @@ void AddMenus(void* handle)
 	AppendMenuW(menu, MF_STRING, IDM_FILE_OPEN, L"&Open");
 	AppendMenuW(menu, MF_SEPARATOR, 0, NULL);
 	AppendMenuW(menu, MF_STRING, IDM_FILE_QUIT, L"&Quit");
-	AppendMenuW(menuBar, MF_POPUP, unsigned int* menu, L"&File");
-	SetMenu(handle, menubar);
+	AppendMenuW(menuBar, MF_POPUP, menu, L"&File");
+	SetMenu(handle, menuBar);
 }
 
 void* __stdcall
