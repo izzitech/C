@@ -1,0 +1,16 @@
+﻿  winMain.c
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(44): warning C4047: 'function': 'UINT_PTR' differs in levels of indirection from 'void *'
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(44): warning C4024: 'AppendMenuW': different types for formal and actual parameter 3
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(128): warning C4047: 'function': 'WPARAM' differs in levels of indirection from 'void *'
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(128): warning C4024: 'DefWindowProcW': different types for formal and actual parameter 3
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(128): warning C4047: 'function': 'LPARAM' differs in levels of indirection from 'void *'
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(128): warning C4024: 'DefWindowProcW': different types for formal and actual parameter 4
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(128): warning C4047: 'return': 'void *' differs in levels of indirection from 'LRESULT'
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(140): warning C4028: formal parameter 1 different from declaration
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(140): warning C4028: formal parameter 2 different from declaration
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(156): warning C4133: 'function': incompatible types - from 'Window *' to 'const WNDCLASSW *'
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(193): warning C4133: 'function': incompatible types - from 'Message *' to 'LPMSG'
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(207): warning C4133: 'function': incompatible types - from 'Message *' to 'const MSG *'
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(208): warning C4133: 'function': incompatible types - from 'Message *' to 'const MSG *'
+c:\users\usuario\documents\github\c\testing_jpeg\winmain.c(212): warning C4047: 'return': 'int' differs in levels of indirection from 'void *'
+  testing_jpeg.vcxproj -> C:\Users\Usuario\Documents\GitHub\C\testing_jpeg\vs_data\testing_jpeg\Debug\testing_jpeg.exe
