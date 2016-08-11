@@ -27,6 +27,7 @@ bool Run(SDL_Event *event) {
 
 		case SDL_QUIT:
 		{
+			// Minor change
 			printf_s("SDL_QUIT event raised!\n");
 			running = false;
 			SDL_Delay(1000);
