@@ -35,7 +35,7 @@ bool Run(SDL_Event *event) {
 
 int main(int argc, char **argv) {
 
-	char *windowTite = "main window";
+	char *windowTitle = "dev / main window";
 
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
 	}
 
 	SDL_Window *window = SDL_CreateWindow(
-		windowTite,
+		windowTitle,
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		640,
